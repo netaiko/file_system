@@ -25,10 +25,10 @@ class FileValidator
     /**
      * Check if the filename is an basic filename format
      * @param $filename
-     * @return false|int
+     * @return false|true
      */
     public static function isName($filename)
     {
-        return preg_match("/([a-zA-Z0-9\s_\\.\-\(\):])+([a-zA-Z0-9])$/", $filename);
+        return preg_match("/([a-zA-Z0-9\s_\\.\-\(\):])+([a-zA-Z0-9])$/", $filename) == true;
     }
 }

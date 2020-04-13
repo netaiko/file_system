@@ -20,8 +20,9 @@ class IndexRequest extends Exception
      * @param $word
      * @throws exception
      */
-    public static function validateSearchWord($word){
-        if(!self::searchWordRule($word)){
+    public static function validateSearchWord($word)
+    {
+        if (!self::searchWordRule($word)) {
             throw new Exception('This word doesnt not content a valid format for a file or directory');
         }
     }

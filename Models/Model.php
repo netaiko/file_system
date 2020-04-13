@@ -12,17 +12,7 @@ use DataBaseConnection;
 
 abstract class Model
 {
-
-    protected $attributes;
-
-    /**
-     * Model constructor.
-     * @param $attributes
-     */
-    public function __construct($attributes)
-    {
-        $this->attributes = $attributes;
-    }
+    protected $id;
 
     /**
      * Get all the rows filtered by $paramenters
@@ -40,7 +30,7 @@ abstract class Model
      * Get the table associated with the classed what is invoking the method
      * @return string
      */
-    private static function getTable():string
+    private static function getTable(): string
     {
         return DB_TABLES[static::class];
     }
@@ -58,7 +48,6 @@ abstract class Model
         return $connection->insert($table, $parameters);
     }
 
-
     /**
      * Get a row by ID
      * @param $id
@@ -72,7 +61,6 @@ abstract class Model
         return $connection->first($table, $parameters);
     }
 
-
     /**
      * Get the first instance filtered by $parameters
      * @param array $parameters
@@ -85,8 +73,6 @@ abstract class Model
         return $connection->first($table, $parameters);
     }
 
-
-
     /**
      * Look for the first instance in a DB table and create it if not exists
      * Abstract method, has to be developed in extended classes
@@ -95,13 +81,23 @@ abstract class Model
      */
     protected abstract static function firstOrCreate(array $parameters);
 
-
+    /**
+     * Delete a row by ID
+     * @param $id
+     */
+    public function delete()
+    {
+        $table = self::getTable();
+        $connection = new DataBaseConnection();
+        $parameters = ['id' => $this->id];
+        return $connection->delete($table, $parameters);
+    }
 
     /**
      * return the absolute path and name
      * @return string
      */
-    protected abstract function getAbsolutePath():string;
+    protected abstract function getAbsolutePath(): string;
 
 
 }

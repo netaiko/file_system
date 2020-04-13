@@ -63,8 +63,8 @@ class DataBaseConnection
      * Execute a valid SQL query
      * @param $sql
      * @param array $parameters
-     * @param bool $allow_null    true:Allow nulls|false: skip nulls
-     * @param bool $strong_match   true:strong word match filtering in queries|false:flexible match filtering in queries
+     * @param bool $allow_null true:Allow nulls|false: skip nulls
+     * @param bool $strong_match true:strong word match filtering in queries|false:flexible match filtering in queries
      */
     private function execute($sql, $parameters = [], $allow_null = false, $strong_match = true)
     {
@@ -80,7 +80,7 @@ class DataBaseConnection
 
     /**
      * @param array $parameters
-     * @param bool $allow_null   true:Allow nulls|false: skip nulls
+     * @param bool $allow_null true:Allow nulls|false: skip nulls
      * @param bool $strong_match true:strong word match filtering in queries|false:flexible match filtering in queries
      */
     public function bindParameters(array $parameters, $allow_null = false, $strong_match = true)
@@ -113,7 +113,6 @@ class DataBaseConnection
         return $this->query->fetchAll();
     }
 
-
     /**
      * Execute a basic Select SQL query filtering by parameters with strong word match
      * @param array $parameters
@@ -131,6 +130,18 @@ class DataBaseConnection
         return $string;
     }
 
+    /**
+     * Execute a basic Delete SQL query by parameters
+     * @param $table
+     * @param array $parameters
+     */
+    public function delete($table, $parameters = [])
+    {
+        $sql = "DELETE FROM  $table ";
+        $sql .= self::params2where($parameters);
+
+        $this->execute($sql, $parameters);
+    }
 
     /**
      * get the first row filtering by parameters

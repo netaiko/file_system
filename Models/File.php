@@ -10,7 +10,7 @@ namespace Models;
 
 class File extends Model
 {
-    private $id;
+
     private $name;
     private $folder_id;
 
@@ -38,7 +38,7 @@ class File extends Model
         foreach (parent::all($parameters) as $item) {
             $list[] = new File($item);
         }
-        return $list??[];
+        return $list ?? [];
     }
 
 
@@ -97,7 +97,7 @@ class File extends Model
      * return the absolute path
      * @return string
      */
-    function getAbsolutePath():string
+    function getAbsolutePath(): string
     {
         $path = $this->folder()->getAbsolutePath();
         return "$path";

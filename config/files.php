@@ -5,4 +5,4 @@
  * Time: 22:27
  */
 
-define('FILE_INPUT', 'files.txt');
+define('FILE_INPUT', $_SERVER['DOCUMENT_ROOT'] . '/files.txt');

@@ -26,12 +26,12 @@
     <?php foreach ($files as $file) { ?>
         <div>
             <span class="path">
-                <?php echo $file->getAbsolutePath().'\\' ?></span><span class="file"><?php echo $file->getName() ?>
+                <?php echo $file->getAbsolutePath() . '\\' ?></span><span class="file"><?php echo $file->getName() ?>
             </span>
         </div>
     <?php } ?>
 
-    <?php if(empty($folders) && empty($files) && !empty($search)) { ?>
+    <?php if (empty($folders) && empty($files) && !empty($search)) { ?>
         <p>No results have been found</p>
     <?php } ?>
 

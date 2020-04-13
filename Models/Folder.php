@@ -10,7 +10,7 @@ namespace Models;
 
 class Folder extends Model
 {
-    private $id;
+
     private $name;
     private $parent_id;
 
@@ -20,9 +20,9 @@ class Folder extends Model
      */
     public function __construct(array $attributes)
     {
-        $this->id = $attributes['id'];
+        $this->id = $attributes['id'] ?? null;
         $this->name = $attributes['name'];
-        $this->parent_id = $attributes['parent_id'];
+        $this->parent_id = $attributes['parent_id'] ?? null;
     }
 
     /**
@@ -92,7 +92,7 @@ class Folder extends Model
      * return the absolute path
      * @return string
      */
-    function getAbsolutePath():string
+    function getAbsolutePath(): string
     {
         $folder = $this;
         $path = $this->name;

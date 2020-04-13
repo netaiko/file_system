@@ -23,22 +23,22 @@ class FolderValidator
     /**
      * Check if the name is a basic name for a folder
      * @param $name
-     * @return false|int
+     * @return boolean
      */
     public static function isName($name)
     {
-        return preg_match("/^[a-zA-Z\s]+$/", $name);
+        return preg_match("/^[a-zA-Z\s]+$/", $name) == true;
     }
 
 
     /**
      * Check if the filename is a basic unit name like C: D: E: F:
      * @param $name
-     * @return false|int
+     * @return boolean
      */
     public static function isUnit($name)
     {
-        return preg_match("/^[a-zA-Z]+:+$/", $name);
+        return preg_match("/^[a-zA-Z]+:+$/", $name) == true;
     }
 
 
